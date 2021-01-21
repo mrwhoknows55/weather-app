@@ -8,3 +8,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+app/src/main/java/com/mrwhoknwos/weatherapp/util/Secret.kt
