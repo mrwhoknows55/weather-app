@@ -24,6 +24,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel.getCurrentWeather()
-        viewModel.getDailyWeather()
+
+        viewModel.currentWeather.observe(this) {
+            binding.tvMainWeatherInfo.text = it.toString()
+        }
+
+//        viewModel.getDailyWeather()
     }
 }

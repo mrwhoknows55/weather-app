@@ -15,7 +15,7 @@ data class CurrentWeatherResponse(
     @Json(name = "coord")
     val coord: Coord,
     @Json(name = "dt")
-    val dt: Int,
+    val dt: Long,
     @Json(name = "id")
     val id: Int,
     @Json(name = "main")
