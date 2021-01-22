@@ -1,25 +1,26 @@
 package com.mrwhoknwos.weatherapp.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.lifecycleScope
-import com.mrwhoknwos.weatherapp.R
-import com.mrwhoknwos.weatherapp.network.API
-import kotlinx.coroutines.launch
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import com.mrwhoknwos.weatherapp.databinding.ActivityMainBinding
+import com.mrwhoknwos.weatherapp.network.ApiService
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-private const val TAG = "MainActivity"
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    private val viewModel: MainViewModel by viewModels()
+    lateinit var binding: ActivityMainBinding
+
+    @Inject lateinit var apiService: ApiService
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        lifecycleScope.launch {
-            val result = API.service.getCurrentWeatherInfo()
-
-            if (result.isSuccessful)
-                Log.d(TAG, result.body().toString())
-        }
+        viewModel.getWeather()
     }
 }

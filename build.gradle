@@ -6,6 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
+//    TODO: change ver names to vars
         classpath "com.android.tools.build:gradle:4.2.0-beta03"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.2"
